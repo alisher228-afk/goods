@@ -2,13 +2,18 @@ package org.example.demo3.entity;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotNull;
 
 public class GoodsDto {
     private int id;
+    @NotNull
     private String name;
+    @NotNull
     private double price;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Type type;
+    @NotNull
     private int quantity;
 
     public GoodsDto(int id, String name, Type type ,  double price, int quantity) {

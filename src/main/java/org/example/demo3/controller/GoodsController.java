@@ -1,5 +1,6 @@
 package org.example.demo3.controller;
 
+import jakarta.validation.Valid;
 import org.example.demo3.entity.GoodsDto;
 import org.example.demo3.service.GoodsService;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class GoodsController {
     }
 
     @PostMapping("/create")
-    public GoodsDto createGoods(@RequestBody GoodsDto goodsDto) {
+    public GoodsDto createGoods(@Valid @RequestBody GoodsDto goodsDto) {
         log.info("createGoods...");
         return goodsService.createGoods(goodsDto);
     }
@@ -48,7 +49,7 @@ public class GoodsController {
         return goodsService.countGoods();
     }
     @PutMapping("/update/{id}")
-    public GoodsDto updateGoods(@PathVariable int id, @RequestBody GoodsDto goodsDto) {
+    public GoodsDto updateGoods(@PathVariable int id, @Valid @RequestBody GoodsDto goodsDto) {
         log.info("updateGoods...");
         return goodsService.updateGoods(id , goodsDto);
     }
