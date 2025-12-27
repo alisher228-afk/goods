@@ -66,10 +66,10 @@ public class GoodsService {
                 .findFirst().orElseThrow(()-> new EntityNotFoundException("No goods found with id " + id));
 
         if(goodsDto.getId() !=0) goodsDto1.setId(goodsDto.getId());
-        if(goodsDto1.getName() !=null) goodsDto1.setName(goodsDto1.getName());
-        if(goodsDto1.getPrice() !=0) goodsDto1.setPrice(goodsDto1.getPrice());
-        if(goodsDto1.getType() !=null) goodsDto1.setType(goodsDto.getType());
-        if(goodsDto1.getQuantity() !=0) goodsDto1.setQuantity(goodsDto1.getQuantity());
+        if(goodsDto.getName() !=null) goodsDto1.setName(goodsDto.getName());
+        if(goodsDto.getPrice() !=0) goodsDto1.setPrice(goodsDto.getPrice());
+        if(goodsDto.getType() !=null) goodsDto1.setType(goodsDto.getType());
+        if(goodsDto.getQuantity() !=0) goodsDto1.setQuantity(goodsDto.getQuantity());
         return goodsDto1;
     }
 }
