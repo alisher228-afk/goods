@@ -13,7 +13,7 @@ import java.util.List;
 public class GoodsController {
     public static final Logger log = LoggerFactory.getLogger(GoodsController.class);
 
-    private static GoodsService goodsService;
+    private final GoodsService goodsService;
 
     public GoodsController(GoodsService goodsService) {
         this.goodsService = goodsService;
