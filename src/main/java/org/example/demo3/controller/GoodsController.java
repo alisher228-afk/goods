@@ -53,5 +53,10 @@ public class GoodsController {
         log.info("updateGoods...");
         return goodsService.updateGoods(id , goodsDto);
     }
-
+    @GetMapping("/page")
+    public List<GoodsDto> sortByPage(@RequestParam(defaultValue = "0") int page,
+                                     @RequestParam(defaultValue = "5") int size) {
+        log.info("sortByPage...");
+        return goodsService.sortByPage(page,size);
+    }
 }

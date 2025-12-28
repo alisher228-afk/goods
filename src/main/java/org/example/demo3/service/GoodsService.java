@@ -99,4 +99,17 @@ public class GoodsService {
         if(goodsDto.getQuantity() >=0 && goodsDto.getQuantity() <=1000) goodsDto1.setQuantity(goodsDto.getQuantity());
         return goodsDto1;
     }
+
+    public List<GoodsDto> sortByPage(int page, int size) {
+        log.info("sortByPage...");
+        if (goodsDtoF.isEmpty()) {
+            throw new IllegalStateException("No goods found");
+        }
+        int start = page * size;
+        int end = Math.min(start + size, goodsDtoF.size());
+        if(start >= goodsDtoF.size()){
+            return new ArrayList<>();
+        }
+        return goodsDtoF.subList(start, end);
+    }
 }
