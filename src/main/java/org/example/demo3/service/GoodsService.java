@@ -2,7 +2,6 @@ package org.example.demo3.service;
 
 
 import jakarta.persistence.EntityNotFoundException;
-import org.apache.coyote.BadRequestException;
 import org.example.demo3.entity.GoodsDto;
 import org.example.demo3.entity.Type;
 import org.slf4j.Logger;
@@ -36,7 +35,7 @@ public class GoodsService {
         boolean nameIsExist = goodsDtoF.stream()
                         .anyMatch(goodsDto1 -> goodsDto1.getName().equalsIgnoreCase(goodsDto.getName()));
         if(nameIsExist){
-            log.warn(goodsDto.getName() + " already exists");
+            log.warn("{} already exists", goodsDto.getName());
             throw new IllegalStateException("Name is already exist");
         }
         goodsDto.setId(++currentId);
