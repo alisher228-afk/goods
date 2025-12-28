@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -111,5 +112,25 @@ public class GoodsService {
             return new ArrayList<>();
         }
         return goodsDtoF.subList(start, end);
+    }
+
+    public List<GoodsDto> sortGoods(String field, String order) {
+        log.info("sortGoods...");
+        ArrayList<GoodsDto> sortGoodsDto = new ArrayList<>(goodsDtoF);
+        Comparator<GoodsDto> goodsDtoComparator;
+        if (goodsDtoF.isEmpty()) {
+            throw new IllegalStateException("No goods found");
+        }
+        switch (field) {
+            case "name" -> goodsDtoComparator = Comparator.comparing(GoodsDto::getName , String.CASE_INSENSITIVE_ORDER);
+            case "price" -> goodsDtoComparator = Comparator.comparing(GoodsDto::getPrice);
+            case "quantity" -> goodsDtoComparator = Comparator.comparing(GoodsDto::getQuantity);
+            default -> throw new IllegalStateException("Invalid field");
+        }
+        if (order.equalsIgnoreCase("asc")) {
+            goodsDtoComparator = goodsDtoComparator.reversed();
+        }
+        sortGoodsDto.sort(goodsDtoComparator);
+        return sortGoodsDto;
     }
 }

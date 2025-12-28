@@ -59,4 +59,10 @@ public class GoodsController {
         log.info("sortByPage...");
         return goodsService.sortByPage(page,size);
     }
+
+    @GetMapping("/sort")
+    public List<GoodsDto> sortGoods(@RequestParam String field ,@RequestParam(defaultValue = "desc") String order) {
+        log.info("sortGoods...");
+        return goodsService.sortGoods(field,order);
+    }
 }
