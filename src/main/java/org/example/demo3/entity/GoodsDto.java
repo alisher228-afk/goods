@@ -2,13 +2,16 @@ package org.example.demo3.entity;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class GoodsDto {
     private int id;
-    @NotNull
+    @NotBlank(message = "Name is required")
     private String name;
     @NotNull
+    @Min(value = 1 , message = "Price must be over 1")
     private double price;
     @NotNull
     @Enumerated(EnumType.STRING)
