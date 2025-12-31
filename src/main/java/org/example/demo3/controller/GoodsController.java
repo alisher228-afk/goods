@@ -1,7 +1,7 @@
 package org.example.demo3.controller;
 
 import jakarta.validation.Valid;
-import org.example.demo3.entity.GoodsDto;
+import org.example.demo3.dto.GoodsDto;
 import org.example.demo3.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
